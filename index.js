@@ -117,9 +117,102 @@ function ArrayIn(arr, num){
 // three and five print "fizz buzz".
 
 
-function doExtraStuff(str){
-    str = upperMy(str);
-    return palindromeIs(str);
+function doExtraStuff(func, str){
+    return func(str);
+}
+console.log(doExtraStuff(arrayify,"hehee"))
+
+
+
+// let myObj= {
+//     nam:'thingy'
+//     .this = "yup"
+// }
+// console.log(myObj.this)
+
+
+
+
+// 1. When declared globally
+// empty object
+// 2. When declared inside a Inside a function
+// to the global object
+
+// 3. When declared inside  an object
+
+// 4. When declared inside a nested object
+
+
+// 5. An annonymous function declared in an object
+
+// 6. A function declaration inside an object
+
+
+class YUP{
+    constructor (KNOWLEDGE){
+        this.KNOWLEDGE = KNOWLEDGE;
+    }
+    printMe(num){
+        let response = ''
+        for (let i = 1; i <= num; i++){
+            response += "#"
+            console.log(response)
+        }
+    }
+    palindromeIs(str){
+        if (str.split('').reverse().join('') === str) {
+            return true
+        }
+        return false
+    
+    }
+    upperMy(str){
+        let results = ''
+        str.split(' ').forEach((word)=>{
+            results += word[0].toUpperCase() + word.substring(1,word.length) + " "
+        })
+        return results.substring(0,results.length - 1)
+    }
+
+    static ArrayIn(arr, num){
+        counter = 1;
+        resI = 0;
+        results = [[]];
+        for (let i=0; i < arr.length; i++){
+            results[resI].push(arr[i])
+            counter += 1;
+            if(counter > num){
+                results.push([])
+                counter =1;
+                resI += 1;
+            }
+        }
+        return new YUP(results)
+    }
+
+    static reverseInt(number){
+        number = number.toString().split('')
+        let result = ''
+        for (let i = number.length - 1; i >= 0; i--){
+            result += number[i]
+        }
+        return new YUP(parseInt(result))
+    }
+
+    static arrayify(obj){
+        let results = [];
+        results.push(Object.keys(obj));
+        results.push(Object.values(obj));
+        return new YUP(results);
+    }
 }
 
-// console.log(doExtraStuff("heh"))
+
+let myInst = YUP.arrayify({a: 1, b: 2, c: 3})
+
+let anotherInst = YUP.reverseInt(123456)
+
+console.log(myInst.KNOWLEDGE)
+console.log(anotherInst.KNOWLEDGE)
+console.log(myInst.upperMy("hello how are yo"))
+
