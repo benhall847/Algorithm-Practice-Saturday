@@ -91,3 +91,35 @@ function palindromeIs(str){
 // chunk([1, 2, 3, 4, 5, 6, 7, 8], 3) --> [[ 1, 2, 3], [4, 5, 6], [7, 8]]
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
+
+
+function ArrayIn(arr, num){
+    counter = 1;
+    resI = 0;
+    results = [[]];
+    for (let i=0; i < arr.length; i++){
+        results[resI].push(arr[i])
+        counter += 1;
+        if(counter > num){
+            results.push([])
+            counter =1;
+            resI += 1;
+        }
+    }
+    return results
+}
+// console.log(ArrayIn([1,2,3,4,5],2))
+
+
+
+// Write a program that console.log's from 1 to n. For multiples of 3 print "fizz", for multiples of 5 print "buzz", and for multiples of 
+
+// three and five print "fizz buzz".
+
+
+function doExtraStuff(str){
+    str = upperMy(str);
+    return palindromeIs(str);
+}
+
+// console.log(doExtraStuff("heh"))
